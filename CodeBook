@@ -1,0 +1,49 @@
+The project executes the following commands as required by the project 
+Download the File 
+  downloads the file from the UCI HAR Datatset
+
+Naming Files 
+  Assign Data to each variable/Label each dataset
+  featuresfile <- features.txt : 561 rows, 2 columns
+    features that came from the accelerometer 
+  activitieslabelfile <- activity_labels.txt : 6 rows, 2 columns
+    activities performed when measurements were taken 
+  testsubjectfile <- test/subject_test.txt : 2947 rows, 1 column
+    contains test data of 9/30 subjects 
+  testvariablesfile <- test/X_test.txt : 2947 rows, 561 columns
+    contains recorded test data 
+  testactivityfile <- test/y_test.txt : 2947 rows, 1 columns
+    test data for record labels 
+  trainsubjectfile <- test/subject_train.txt : 7352 rows, 1 column
+    train data on 21/30 subjects 
+  trainvariablesfile <- test/X_train.txt : 7352 rows, 561 columns
+    recorded features train data 
+  trainactivityfile <- test/y_train.txt : 7352 rows, 1 columns
+     train data of code labels 
+     
+Merges the Data Set 
+  X (10299 rows, 561 columns) is created by merging x_train and x_test using rbind() function
+  Y (10299 rows, 1 column) is created by merging y_train and y_test using rbind() function
+  Subject (10299 rows, 1 column) is created by merging subject_train and subject_test using rbind() function
+  CombineFile (10299 rows, 563 column) is created by merging Subject, Y and X using cbind() function
+  
+Cleaning Dataset
+  CleanDat (10299 rows, 88 columns) is created by subsetting Merged_Data, 
+  selecting only columns: subject, code and the measurements on the mean and standard deviation (std) for each measurement
+  
+Cleaning Dataset
+  naming the dataset columns with the correct names 
+  code column in TidyData renamed into activities
+  All Acc in column’s name replaced by Accelerometer
+  All Gyro in column’s name replaced by Gyroscope
+  All BodyBody in column’s name replaced by Body
+  All Mag in column’s name replaced by Magnitude
+  All start with character f in column’s name replaced by Frequency
+  All start with character t in column’s name replaced by Time
+  All tbody in column’s name replaced by TimeBody
+  All g in column’s name replaced by Gravity
+
+Final data 
+  FinalData (180 rows, 88 columns) is created by sumarizing TidyData taking the means of each variable for each activity and each subject, 
+  after groupped by subject and activity.
+  Export FinalData into FinalData.txt file.
